@@ -17,8 +17,13 @@ eclipse.project {
 }
 
 dependencies {
-  implementation "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
+  implementation ("com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion") {
+    exclude group: "com.mobidevelop.robovm", module: "robovm-rt"
+    exclude group: "com.mobidevelop.robovm", module: "robovm-cocoatouch"
+    exclude group: "com.mobidevelop.robovm", module: "robovm-objc"
+  }
   implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
+  implementation "$robovmGroup:robovm-objc:$robovmVersion"
   implementation "$robovmGroup:robovm-cocoatouch:$robovmVersion"
   implementation "$robovmGroup:robovm-rt:$robovmVersion"
   implementation project(':core')
